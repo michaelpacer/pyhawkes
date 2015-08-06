@@ -1,6 +1,7 @@
 """
 Compare the various algorithms on a synthetic dataset.
 """
+from __future__ import print_function
 import cPickle
 import os
 import copy
@@ -164,7 +165,7 @@ if __name__ == "__main__":
 
     if seed is None:
         seed = np.random.randint(2**32)
-    print "Setting seed to ", seed
+    print("Setting seed to ", seed)
     np.random.seed(seed)
 
     assert os.path.exists(os.path.dirname(output_dir)), "Output directory does not exist!"

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import time
 import numpy as np
 np.random.seed(1111)
@@ -40,7 +41,7 @@ def generate_dataset(bias=1.):
 
     S_dt,_ = dt_model.generate(T=int(np.ceil(T/dt)), keep=False)
 
-    print "sampled dataset with ", S_dt.sum(), "events"
+    print("sampled dataset with ", S_dt.sum(), "events")
 
     # Convert S_dt to continuous time
     S_ct = dt * np.concatenate([ibincount(S) for S in S_dt.T]).astype(float)
@@ -92,7 +93,7 @@ if __name__ == "__main__":
     res_file = os.path.join("results", "run_time_vs_rate_2.pkl")
 
     if os.path.exists(res_file):
-        print "Loading results from ", res_file
+        print("Loading results from ", res_file)
         with open(res_file, "r") as f:
             events_per_bin, dt_times, ct_times = cPickle.load(f)
     else:
@@ -105,7 +106,7 @@ if __name__ == "__main__":
         ct_times = []
         for bias in biases:
             for iter in xrange(N_runs_per_bias):
-                print "Bias ", bias, " Run (%d/%d)" % (iter, N_runs_per_bias)
+                print("Bias ", bias, " Run (%d/%d)" % (iter, N_runs_per_bias))
                 S_dt, S_ct, C_ct = generate_dataset(bias)
                 events_per_bin.append(S_dt.sum() / float(S_dt.size))
                 dt_times.append(fit_discrete_time_model_gibbs(S_dt, N_samples))

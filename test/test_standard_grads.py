@@ -1,3 +1,4 @@
+from __future__ import print_function
 from scipy.optimize import check_grad
 import numpy as np
 from pyhawkes.models import DiscreteTimeStandardHawkesModel, DiscreteTimeNetworkHawkesModelGammaMixture
@@ -23,15 +24,15 @@ def test_gradients():
         test_model.weights[0,:] = np.exp(x)
         return test_model.compute_gradient(0)
 
-    print "Checking initial gradient: "
-    print gradient(np.log(test_model.weights[0,:]))
+    print("Checking initial gradient: ")
+    print(gradient(np.log(test_model.weights[0,:])))
     check_grad(objective, gradient,
                np.log(test_model.weights[0,:]))
 
-    print "Checking gradient at true model parameters: "
+    print("Checking gradient at true model parameters: ")
     test_model.initialize_with_gibbs_model(true_model)
 
-    print gradient(np.log(test_model.weights[0,:]))
+    print(gradient(np.log(test_model.weights[0,:])))
     check_grad(objective, gradient,
                np.log(test_model.weights[0,:]))
 

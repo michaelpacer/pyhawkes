@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 
 from pyhawkes.internals.parent_updates import mf_update_Z
@@ -24,7 +25,7 @@ def test_parallel_parent_updates():
 
     for itr in xrange(1000):
         if itr % 10 == 0:
-            print "Iteration\t", itr
+            print("Iteration\t", itr)
 
         mf_update_Z(EZ0,
                     EZ,
@@ -46,7 +47,7 @@ def check_EZ(EZ0, EZ, S):
     EZsum = EZ0 + EZ.sum(axis=(1,3))
     # assert np.allclose(self.S, Zsum), "_check_Z failed. Zsum does not add up to S!"
     if not np.allclose(S, EZsum):
-        print "_check_Z failed. Zsum does not add up to S!"
+        print("_check_Z failed. Zsum does not add up to S!")
         import pdb; pdb.set_trace()
 
 test_parallel_parent_updates()

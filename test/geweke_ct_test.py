@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 np.random.seed(1234)
 import matplotlib.pyplot as plt
@@ -56,11 +57,11 @@ def test_geweke():
     tau_mean     = tau_samples[offset:, ...].mean(axis=0)
     lambda0_mean = lambda0_samples[offset:, ...].mean(axis=0)
 
-    print "A mean:        ", A_mean
-    print "W mean:        ", W_mean
-    print "mu mean:       ", mu_mean
-    print "tau mean:      ", tau_mean
-    print "lambda0 mean:  ", lambda0_mean
+    print("A mean:        ", A_mean)
+    print("W mean:        ", W_mean)
+    print("mu mean:       ", mu_mean)
+    print("tau mean:      ", tau_mean)
+    print("lambda0 mean:  ", lambda0_mean)
 
 
     # Plot the log probability over iterations
@@ -78,8 +79,8 @@ def test_geweke():
     plt.xlabel('lam0')
     plt.ylabel('p(lam0)')
 
-    print "Expected p(A):  ", model.network.P
-    print "Empirical p(A): ", A_samples.mean(axis=0)
+    print("Expected p(A):  ", model.network.P)
+    print("Empirical p(A): ", A_samples.mean(axis=0))
 
     # Plot the histogram of weight samples
     plt.figure()

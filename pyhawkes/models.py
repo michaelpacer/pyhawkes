@@ -1,6 +1,7 @@
 """
 Top level classes for the Hawkes process model.
 """
+from __future__ import print_function
 import abc
 import copy
 
@@ -413,11 +414,11 @@ class DiscreteTimeStandardHawkesModel(object):
         itr = [0]
         def callback(x):
             if itr[0] % 10 == 0:
-                print "Iteration: %03d\t LP: %.1f" % (itr[0], self.log_posterior())
+                print("Iteration: %03d\t LP: %.1f" % (itr[0], self.log_posterior()))
             itr[0] = itr[0] + 1
 
         for k in xrange(self.K):
-            print "Optimizing process ", k
+            print("Optimizing process ", k)
             itr[0] = 0
             x0 = np.log(self.weights[k,:])
             res = minimize(objective,           # Objective function
@@ -449,11 +450,11 @@ class DiscreteTimeStandardHawkesModel(object):
         itr = [0]
         def callback(x):
             if itr[0] % 10 == 0:
-                print "Iteration: %03d\t LP: %.1f" % (itr[0], self.log_posterior())
+                print("Iteration: %03d\t LP: %.1f" % (itr[0], self.log_posterior()))
             itr[0] = itr[0] + 1
 
         for k in xrange(self.K):
-            print "Optimizing process ", k
+            print("Optimizing process ", k)
             itr[0] = 0
             x0 = self.weights[k,:]
             res = minimize(objective,           # Objective function
@@ -776,7 +777,7 @@ class _DiscreteTimeNetworkHawkesModelBase(object):
             maxeig = eigs(self.weight_model.W_effective, k=1)[0]
 
         if verbose:
-            print "Max eigenvalue: ", maxeig
+            print("Max eigenvalue: ", maxeig)
 
         return maxeig < 1.0
 
@@ -847,7 +848,7 @@ class _DiscreteTimeNetworkHawkesModelBase(object):
 
             # Check Spike limit
             if np.any(S[t,:] >= 1000):
-                print "More than 1000 events in one time bin!"
+                print("More than 1000 events in one time bin!")
                 import pdb; pdb.set_trace()
 
         # Only keep the first T time bins
@@ -1686,7 +1687,7 @@ class ContinuousTimeNetworkHawkesModel(ModelGibbsSampling):
             from scipy.sparse.linalg import eigs
             maxeig = eigs(self.weight_model.W_effective, k=1)[0]
 
-        print "Max eigenvalue: ", maxeig
+        print("Max eigenvalue: ", maxeig)
         if maxeig < 1.0:
             return True
         else:

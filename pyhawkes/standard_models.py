@@ -1,3 +1,4 @@
+from __future__ import print_function
 import copy
 import abc
 
@@ -112,7 +113,7 @@ class _NonlinearHawkesNodeBase(object):
         itr = [0]
         def callback(w):
             if itr[0] % 10 == 0:
-                print "Iteration: %03d\t LP: %.5f" % (itr[0], self.objective(w))
+                print("Iteration: %03d\t LP: %.5f" % (itr[0], self.objective(w)))
             itr[0] = itr[0] + 1
 
         itr[0] = 0
@@ -336,8 +337,8 @@ class _NonlinearHawkesProcessBase(object):
     def fit_with_bfgs(self):
         # TODO: This can be parallelized
         for k, node in enumerate(self.nodes):
-            print ""
-            print "Fitting Node ", k
+            print("")
+            print("Fitting Node ", k)
             node.fit_with_bfgs()
 
 

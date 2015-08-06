@@ -26,7 +26,7 @@ def xcorr(S, dtmax=10):
 
     # Compute cross correlation at each time offset
     for dt in np.arange(dtmax):
-        # print "Computing cross correlation at offset %d" % dt
+        # print("Computing cross correlation at offset %d".format(dt))
 
         # Compute correlation in sections to conserve memory
         chunksz = 16

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -52,7 +53,7 @@ def demo(K=3, T=1000, dt_max=20, p=0.25):
     samples = []
     lps = []
     for itr in xrange(N_samples):
-        print "Gibbs iteration ", itr
+        print("Gibbs iteration ", itr)
         test_model.resample_model()
         lps.append(test_model.log_probability())
         samples.append(test_model.copy_sample())

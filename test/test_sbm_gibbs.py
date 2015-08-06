@@ -1,3 +1,4 @@
+from __future__ import print_function
 import copy
 
 import numpy as np
@@ -17,7 +18,7 @@ def test_gibbs_sbm(seed=None):
     if seed is None:
         seed = np.random.randint(2**32)
 
-    print "Setting seed to ", seed
+    print("Setting seed to ", seed)
     np.random.seed(seed)
 
     C = 10
@@ -53,7 +54,7 @@ def test_gibbs_sbm(seed=None):
     lps = []
     for itr in xrange(N_samples):
         if itr % 5 == 0:
-            print "Iteration: ", itr
+            print("Iteration: ", itr)
         samples.append(copy.deepcopy(test_model.get_parameters()))
 
         lps.append(test_model.log_probability())
@@ -67,8 +68,8 @@ def test_gibbs_sbm(seed=None):
     # Compute sample statistics for second half of samples
     c_samples       = np.array([c for _,_,_,_,c,_,_,_ in samples])
 
-    print "True c: ", true_model.network.c
-    print "Test c: ", c_samples[-10:, :]
+    print("True c: ", true_model.network.c)
+    print("Test c: ", c_samples[-10:, :])
 
     # Compute the adjusted mutual info score of the clusterings
     amis = []
