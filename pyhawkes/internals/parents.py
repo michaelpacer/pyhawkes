@@ -1,7 +1,7 @@
 from __future__ import division
 import numpy as np
 
-from pybasicbayes.distributions import GibbsSampling, MeanField
+from pybasicbayes.abstractions import GibbsSampling, MeanField
 from gslrandom import multinomial_par, multinomial
 
 from pyhawkes.utils.utils import initialize_pyrngs
